@@ -10,20 +10,8 @@ import { SwapiService } from './swapi.service';
 })
 
 export class Swapi implements OnInit {
+    errorMessage: string;
     swapiData: any[] = [];
-    //     {
-    //         'number': 4,
-    //         'title': 'a new hope'
-    //     },
-    //     {
-    //         'number': 5,
-    //         'title': 'empire strikes back'
-    //     },
-    //     {
-    //         'number': 6,
-    //         'title': 'return of the jedi'
-    //     }
-    // ];
 
     constructor(private _swapiService: SwapiService) {
 
@@ -31,6 +19,12 @@ export class Swapi implements OnInit {
 
     ngOnInit(): void {
         console.log('Swapi was inited.');
-        this.swapiData = this._swapiService.getSwapi();
+        this._swapiService.getSwapi()
+            .subscribe(data => {
+                this.swapiData = data;
+                console.log(this.swapiData);
+            },
+                error => this.errorMessage = <any>error);
+        
     }
 }

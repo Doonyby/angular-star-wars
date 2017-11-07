@@ -1,22 +1,21 @@
 import { Injectable } from "@angular/core";
-
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { Observable } from "rxjs/Observable";
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/do';
 
 @Injectable()
 export class SwapiService {
-    getSwapi(): any[] {
-        return [
-            {
-                'number': 4,
-                'title': 'A new hope'
-            },
-            {
-                'number': 5,
-                'title': 'Empire strikes back'
-            },
-            {
-                'number': 6,
-                'title': 'Return of the jedi'
-            }
-        ];
+    private _productUrl = 'https://swapi.co/api/planets/'; 
+    constructor(private _http: HttpClient) {}
+    getSwapi(): Observable<any> {
+        return this._http.get<any>(this._productUrl)
+            // .do(data => console.log('All: ' + JSON.stringify(data)))
+            .catch(this.handleError);
+    } 
+    
+    private handleError(err: HttpErrorResponse) {
+        console.log(err.message);
+        return Observable.throw(err.message);
     }
 }
