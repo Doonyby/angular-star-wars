@@ -2,20 +2,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AppComponent } from './app.component';
-import { Swapi } from './swapi/swapi.component';
-
+import { StarWarsComponent } from './starwars.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    Swapi,
+    StarWarsComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
   ],
+  exports: [StarWarsComponent],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [StarWarsComponent]
 })
-export class AppModule { }
+export class StarWarsModule { }

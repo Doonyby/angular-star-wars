@@ -1,0 +1,15 @@
+<div>
+    <h1>{{pageTitle}}</h1>
+    <h2 *ngIf='showSubTitle'>{{subTitleMessage}}</h2>
+    <input [(ngModel)]="customSubtitle" #ctrl="ngModel" type="text">
+    <p>{{customSubtitle}}</p>
+    <button (click)='onBtnClick()'>{{showSubTitle ? 'Hide': 'Show'}} subtitle</button>
+    <button>Go to page 2</button>
+    <div>
+        <h3>My favorite hero is {{favoriteHero.name}}</h3>
+        <button *ngFor="let hero of heroes; let i=index" (click)="changeFavoriteHero(i)">{{hero.id}} {{hero.name}} <span *ngIf="hero.id === 1">!</span></button>
+    </div>
+    <p *ngIf="heroes.length > 3">There are many heroes!</p>
+</div>
+
+
