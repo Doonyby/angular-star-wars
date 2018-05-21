@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgModel } from '@angular/forms';
 
-import { Hero } from './models';
+import { HeroClass } from './hero-class';
 
 @Component({
   selector: 'star-wars-root',
@@ -16,10 +16,10 @@ export class StarWarsComponent implements OnInit {
   subTitleMessage: string = 'This is my subtitle';
   showSubTitle: boolean = false;
   heroes = [
-    new Hero(1, 'Windstorm'), 
-    new Hero(13, 'Bombasto'), 
-    new Hero(44, 'Magneta'),
-    new Hero(25, 'Tornado') 
+    new HeroClass(1, 'Windstorm'), 
+    new HeroClass(13, 'Bombasto'), 
+    new HeroClass(44, 'Magneta'),
+    new HeroClass(25, 'Tornado') 
   ];
   favoriteHero = this.heroes[0];
   buttonStyle = {
